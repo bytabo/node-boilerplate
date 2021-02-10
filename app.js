@@ -6,8 +6,8 @@ const app = express();
 // middleware functions
 app.use(middleware.helmet);
 app.use(middleware.ratelimit);
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json()); // @todo store also in middleware module
+app.use(express.urlencoded({ extended: false })); // @todo store also in middleware module
 
 // routes
 app.use('/items', require('./routes/items'));
