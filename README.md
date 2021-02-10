@@ -26,6 +26,23 @@ Included
 * DB_URL= ```SET UR MONGO DB URL HERE```
 * TEST_URL= ```SET UR EXAMPLE API REQUEST URL HERE``` for example: 'https://jsonplaceholder.typicode.com/todos/1'
 
+* RATELIMITER_TIME= ```SET A TIME LIMIT FOR REQUEST COUNT IN MS eg 900000 (15 MIN)```
+* RATELIMITER_REQUESTS== ```SET A RATE LIMIT FOR REQUESTS eg 100 (in 15 min)```
+* BASIC_AUTH_USER=user= ```USER FOR BASIC AUTH```
+* BASIC_AUTH_PASSWORD== ```PASSWORD FOR BASIC AUTH```
+
+* SMTP_HOST= ```SMTP SERVER eg. ux234234.all-inkl.com```
+* SMTP_PORT= ```SMTP PORT eg. 465 (default SSL port)```
+* SMTP_USER= ```SMTP USER```
+* SMTP_PASSWORD= ```SMTP PASSWORD```
+* SMTP_FROM= ```SMTP EMAIL ADRESS OF USER```
+
+
+## Send mails
+
+Edit SMTP variables in .env file and setup your email template in ```./data/email-templates/default.ejs```
+
+
 ## Authors
 
 bytabo - Digital crew [https://www.bytabo.de](https://www.bytabo.de)
