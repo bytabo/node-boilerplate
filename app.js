@@ -16,4 +16,4 @@ app.use('/users', require('./routes/users'));
 
 module.exports = app;
 
-// todo: swagger, error handling, logging, concurrency (performance), cronjobs module
+// todo: swagger, error handling, logging, concurrency (performance)
