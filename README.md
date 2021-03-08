@@ -31,7 +31,7 @@ Included
 * BASIC_AUTH_USER=user= ```USER FOR BASIC AUTH```
 * BASIC_AUTH_PASSWORD== ```PASSWORD FOR BASIC AUTH```
 
-* SMTP_HOST= ```SMTP SERVER eg. ux234234.all-inkl.com```
+* SMTP_HOST= ```SMTP SERVER```
 * SMTP_PORT= ```SMTP PORT eg. 465 (default SSL port)```
 * SMTP_USER= ```SMTP USER```
 * SMTP_PASSWORD= ```SMTP PASSWORD```
@@ -42,6 +42,13 @@ Included
 
 Edit SMTP variables in .env file and setup your email template in ```./data/email-templates/default.ejs```
 
+## Open issues
+
+* Swagger
+* Errorhandling
+* Logging (eg bunyan or winston)
+* Concurrency (performance) (really needed?)
+* .editorconfig
 
 ## Authors
 
