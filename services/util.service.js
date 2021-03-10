@@ -1,6 +1,7 @@
 const makeService = () => {
     function addTen(number) {
         const numberPlusTen = number + 10;
+
         return numberPlusTen;
     }
 

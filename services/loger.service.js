@@ -5,7 +5,7 @@ const makeService = (winston = requiredWinston) => {
         format: winston.format.simple(),
     });
 
-    const loggerFormat = winston.format.printf(({message, timestamp}) => `${timestamp} ${message}`);
+    const loggerFormat = winston.format.printf(({ message, timestamp }) => `${timestamp} ${message}`);
 
     // add output also to console on development
     if (process.env.NODE_ENV === 'production') {
@@ -37,11 +37,11 @@ const makeService = (winston = requiredWinston) => {
     const logMessage = (level, message) => {
         switch (typeof message) {
         case 'object':
-            return logger.log({level, message: JSON.stringify(message)});
+            return logger.log({ level, message: JSON.stringify(message) });
         case 'string':
-            return logger.log({level, message});
+            return logger.log({ level, message });
         default:
-            return logger.log({level, message: message.toString()});
+            return logger.log({ level, message: message.toString() });
         }
     };
 
