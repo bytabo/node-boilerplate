@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const logger = require('./services/logger.service')(require('winston'));
+const logger = require('./services/logger.service')();
 
 const config = {
     autoIndex: false,

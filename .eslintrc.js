@@ -26,8 +26,8 @@ module.exports = {
             'warn',
             {
                 groups: [
-                    'internal',
                     'external',
+                    'internal',
                     ['parent', 'sibling', 'index'],
                 ],
             },

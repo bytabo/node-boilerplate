@@ -1,15 +1,10 @@
 const app = require('express')();
 
 // execute cronjobs in service
-require('./services/cronjobs.service')(require('node-cron'));
+require('./services/cronjobs.service')();
 
 // middleware functions
-const middlewareService = require('./services/middleware.service')(
-    require('express-rate-limit'),
-    require('helmet'),
-    require('express-basic-auth'),
-    require('express'),
-);
+const middlewareService = require('./services/middleware.service')();
 
 app.use(middlewareService.helmet);
 app.use(middlewareService.ratelimit);
