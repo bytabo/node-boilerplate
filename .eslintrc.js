@@ -21,6 +21,18 @@ module.exports = {
                 variables: false,
             },
         ],
+
+        'import/order': [
+            'warn',
+            {
+                groups: [
+                    'internal',
+                    'external',
+                    ['parent', 'sibling', 'index'],
+                ],
+            },
+        ],
+
         'no-console': [
             'error',
             {
