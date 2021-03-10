@@ -27,10 +27,7 @@ const makeService = (winston = requiredWinston) => {
         }));
     } else {
         logger.add(new winston.transports.Console({
-            format: winston.format.combine(
-                winston.format.timestamp(),
-                loggerFormat,
-            ),
+            format: winston.format.printf(({ message }) => message),
         }));
     }
 
