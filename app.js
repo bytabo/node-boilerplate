@@ -1,14 +1,20 @@
-const express = require('express');
-const middleware = require('./services/middleware.service');
-require('./services/cronjobs.service').execCronjobs();
+const app = require('express')();
 
-const app = express();
+// execute cronjobs in service
+require('./services/cronjobs.service')(require('node-cron'));
 
 // middleware functions
-app.use(middleware.helmet);
-app.use(middleware.ratelimit);
-app.use(middleware.json);
-app.use(middleware.urlencoded);
+const middlewareService = require('./services/middleware.service')( // @todo lint fix
+    require('express-rate-limit'),
+    require('helmet'),
+    require('express-basic-auth'),
+    require('express'),
+);
+
+app.use(middlewareService.helmet);
+app.use(middlewareService.ratelimit);
+app.use(middlewareService.json);
+app.use(middlewareService.urlencoded);
 
 // routes
 app.use('/items', require('./routes/items'));

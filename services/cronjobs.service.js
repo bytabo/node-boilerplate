@@ -1,7 +1,4 @@
-const cron = require('node-cron');
-const cronjobs = {};
-
-cronjobs.execCronjobs = () => {
+const makeService = (cron) => () => {
     // ------------------------------
     // every day at 12am
     // ------------------------------
@@ -36,4 +33,4 @@ cronjobs.execCronjobs = () => {
     });
 };
 
-module.exports = cronjobs;
+module.exports = makeService;
