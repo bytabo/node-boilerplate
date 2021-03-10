@@ -1,6 +1,6 @@
 const express = require('express');
-const middleware = require('./modules/middleware.module');
-require('./modules/cronjobs.module').execCronjobs();
+const middleware = require('./services/middleware.service');
+require('./services/cronjobs.service').execCronjobs();
 
 const app = express();
 
@@ -15,5 +15,3 @@ app.use('/items', require('./routes/items'));
 app.use('/users', require('./routes/users'));
 
 module.exports = app;
-
-// todo: swagger, error handling, logging, concurrency (performance)

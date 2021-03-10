@@ -15,8 +15,8 @@ const axiosWithError = {
     get: () => Promise.reject(new Error('I am an error')),
 };
 
-const service = require('./services/jsonService')(axios);
-const serviceWithError = require('./services/jsonService')(axiosWithError);
+const service = require('../services/json.service')(axios);
+const serviceWithError = require('../services/json.service')(axiosWithError);
 
 describe('The json service', () => {
     describe('function getJson', () => {
