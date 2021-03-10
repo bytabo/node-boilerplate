@@ -5,7 +5,7 @@ require('./services/cronjobs.service')(require('node-cron'));
 
 // middleware functions
 // eslint-disable-next-line import/order
-const middlewareService = require('./services/middleware.service')( // @todo lint fix
+const middlewareService = require('./services/middleware.service')(
     require('express-rate-limit'),
     require('helmet'),
     require('express-basic-auth'),
