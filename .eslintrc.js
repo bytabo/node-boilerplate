@@ -12,6 +12,7 @@ module.exports = {
         ecmaVersion: 10,
     },
     rules: {
+        'newline-before-return': 'error',
         'no-use-before-define': [
             'error',
             {

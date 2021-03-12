@@ -1,13 +1,20 @@
-const express = require('express');
-const itemsRouter = require('./routes/items');
-const usersRouter = require('./routes/users');
+const app = require('express')();
+const logger = require('./services/logger.factory');
 
-const app = express();
+if (!process.env.PORT) {
+    logger.info('No port is net in .env, maybe this file is missing?');
+}
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// middleware functions
+const middleware = require('./services/middleware.factory');
 
-app.use('/items', itemsRouter);
-app.use('/users', usersRouter);
+app.use(middleware.helmet);
+app.use(middleware.ratelimit);
+app.use(middleware.json);
+app.use(middleware.urlencoded);
+
+// routes
+app.use('/items', require('./routes/items'));
+app.use('/users', require('./routes/users'));
 
 module.exports = app;

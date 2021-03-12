@@ -4,17 +4,29 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "test": "jest"
+    "start-watch": "nodemon server.js",
+    "test": "jest",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
     "express": "~4.17.1",
+    "express-basic-auth": "^1.2.0",
+    "express-rate-limit": "^5.2.3",
+    "helmet": "^4.4.1",
     "mongoose": "^5.11.14",
-    "dotenv": "^8.2.0"
+    "node-cron": "^2.0.3",
+    "nodemailer": "^6.4.17",
+    "nodemon": "^2.0.7",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^7.19.0",
-    "eslint-plugin-import": "^2.22.1",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3"
   }
 }

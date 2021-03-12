@@ -1,4 +1,4 @@
-const { addTen, getTypeOfVariable } = require('./services/utilService');
+const { addTen, getTypeOfVariable } = require('../services/util.service');
 
 describe('the util service', () => {
     it('function addTen returns a number plus 10', () => {

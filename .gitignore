@@ -1,3 +1,6 @@
 node_modules
 .idea
 .env
+package-lock.json
+error.log
+info.log
