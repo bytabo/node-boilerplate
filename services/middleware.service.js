@@ -1,4 +1,14 @@
-const makeService = (rateLimit, helmet, basicAuth, express) => {
+const requiredRateLimit = require('express-rate-limit');
+const requiredHelmet = require('helmet');
+const requiredBasicAuth = require('express-basic-auth');
+const requiredExpress = require('express');
+
+const makeService = (
+    rateLimit = requiredRateLimit,
+    helmet = requiredHelmet,
+    basicAuth = requiredBasicAuth,
+    express = requiredExpress,
+) => {
     const middleware = {};
 
     middleware.ratelimit = (req, res, next) => {

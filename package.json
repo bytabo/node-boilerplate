@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node server.js",
     "start-watch": "nodemon server.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint .",
+    "lint-fix": "eslint . --fix"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -17,7 +19,8 @@
     "mongoose": "^5.11.14",
     "node-cron": "^2.0.3",
     "nodemailer": "^6.4.17",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "eslint": "^7.19.0",

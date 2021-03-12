@@ -1,12 +1,15 @@
-const makeService = (cron) => () => {
+const requiredCron = require('node-cron');
+const requiredLoggerService = require('./logger.service')();
+
+const makeService = (cron = requiredCron, logger = requiredLoggerService) => () => {
     // ------------------------------
     // every day at 12am
     // ------------------------------
     cron.schedule('0 1 * * *', async () => {
         try {
-            console.info('Run daily cronjob');
+            logger.info('Run daily cronjob');
         } catch (error) {
-            console.error('Error executing daily cronjob', error);
+            logger.error('Error executing daily cronjob', error);
         }
     });
 
@@ -15,9 +18,9 @@ const makeService = (cron) => () => {
     // ------------------------------
     cron.schedule('0 0 * * 0', async () => {
         try {
-            console.info('Run weekly cronjob');
+            logger.info('Run weekly cronjob');
         } catch (error) {
-            console.error('Error executing weekly cronjob', error);
+            logger.error('Error executing weekly cronjob', error);
         }
     });
 
@@ -26,9 +29,9 @@ const makeService = (cron) => () => {
     // ------------------------------
     cron.schedule('0 1 1 * *', async () => {
         try {
-            console.info('Run monthly cronjob');
+            logger.info('Run monthly cronjob');
         } catch (error) {
-            console.error('Error executing monthly cronjob', error);
+            logger.error('Error executing monthly cronjob', error);
         }
     });
 };

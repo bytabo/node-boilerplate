@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 require('dotenv').config();
-const http = require('http');
 const app = require('./app');
+const logger = require('./services/logger.service')();
+const http = require('http');
 require('./mongoose');
 
 const port = normalizePort(process.env.PORT || '3000');
@@ -30,11 +31,11 @@ function onError(error) {
 
     switch (error.code) {
     case 'EACCES':
-        console.error(`${bind} requires elevated privileges`);
+        logger.error(`${bind} requires elevated privileges`);
         process.exit(1);
         break;
     case 'EADDRINUSE':
-        console.error(`${bind} is already in use`);
+        logger.error(`${bind} is already in use`);
         process.exit(1);
         break;
     default:
@@ -44,5 +45,5 @@ function onError(error) {
 
 function onListening() {
     const addr = server.address();
-    console.info(`Listening on ${addr.port}`);
+    logger.info(`Listening on ${addr.port}`);
 }
