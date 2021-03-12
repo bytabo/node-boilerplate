@@ -1,4 +1,6 @@
-const makeService = ({ rateLimit, helmet, basicAuth, express }) => {
+const makeService = ({
+    rateLimit, helmet, basicAuth, express,
+}) => {
     const middleware = {};
 
     middleware.ratelimit = (req, res, next) => {
