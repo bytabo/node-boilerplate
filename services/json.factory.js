@@ -1,4 +1,4 @@
 const axios = require('axios');
-const factory = require('./json.service')({ axios });
+const service = require('./json.service')({ axios });
 
-module.exports = factory;
+module.exports = service;

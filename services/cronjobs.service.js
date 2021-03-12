@@ -22,7 +22,7 @@ const makeService = ({ cron, logger }) => () => {
     });
 
     // ------------------------------
-    // every moth
+    // every month
     // ------------------------------
     cron.schedule('0 1 1 * *', async () => {
         try {

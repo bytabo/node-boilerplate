@@ -46,7 +46,6 @@ Edit SMTP variables in .env file and setup your email template in ```./data/emai
 
 * Swagger
 * Errorhandling
-* Logging (eg bunyan or winston)
 * Concurrency (performance) (really needed?)
 * .editorconfig
 

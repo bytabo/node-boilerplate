@@ -5,28 +5,29 @@ const makeService = ({ winston }) => {
 
     const loggerFormat = winston.format.printf(({ message, timestamp }) => `${timestamp} ${message}`);
 
-    // add output also to console on development
-    if (process.env.NODE_ENV === 'production') {
+    const addFileLogger = (level) => {
         logger.add(new winston.transports.File({
-            filename: 'error.log',
-            level: 'error',
+            filename: `${level}.log`,
+            level,
             format: winston.format.combine(
                 winston.format.timestamp(),
                 loggerFormat,
             ),
         }));
-        logger.add(new winston.transports.File({
-            filename: 'info.log',
-            level: 'info',
-            format: winston.format.combine(
-                winston.format.timestamp(),
-                loggerFormat,
-            ),
-        }));
-    } else {
+    };
+
+    const addConsoleLogger = () => {
         logger.add(new winston.transports.Console({
             format: winston.format.printf(({ message }) => message),
         }));
+    };
+
+    // add output also to console on development
+    if (process.env.NODE_ENV === 'production') {
+        addFileLogger('error');
+        addFileLogger('info');
+    } else {
+        addConsoleLogger();
     }
 
     const logMessage = (level, message) => {

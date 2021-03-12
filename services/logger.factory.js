@@ -1,4 +1,4 @@
 const winston = require('winston');
-const factory = require('./logger.service')({ winston });
+const service = require('./logger.service')({ winston });
 
-module.exports = factory;
+module.exports = service;

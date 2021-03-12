@@ -1,3 +1,3 @@
-const factory = require('./util.service')();
+const service = require('./util.service')();
 
-module.exports = factory;
+module.exports = service;
