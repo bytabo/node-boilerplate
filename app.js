@@ -2,7 +2,7 @@ const app = require('express')();
 const logger = require('./services/logger.factory');
 
 if (!process.env.PORT) {
-    logger.info('No port is net in .env, maybe this file is missing?');
+    logger.info('No port found in .env, maybe this file is missing?');
 }
 
 // middleware functions
