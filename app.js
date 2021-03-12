@@ -1,15 +1,12 @@
 const app = require('express')();
 
-// execute cronjobs in service
-require('./services/cronjobs.service')();
-
 // middleware functions
-const middlewareService = require('./services/middleware.service')();
+const middleware = require('./services/middleware.factory');
 
-app.use(middlewareService.helmet);
-app.use(middlewareService.ratelimit);
-app.use(middlewareService.json);
-app.use(middlewareService.urlencoded);
+app.use(middleware.helmet);
+app.use(middleware.ratelimit);
+app.use(middleware.json);
+app.use(middleware.urlencoded);
 
 // routes
 app.use('/items', require('./routes/items'));

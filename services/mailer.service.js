@@ -1,4 +1,4 @@
-const makeService = (nodemailer, ejs) => {
+const makeService = ({ nodemailer, ejs }) => {
     const sendMail = async (to, subject, text) => {
         const transportObject = {
             host: process.env.SMTP_HOST,

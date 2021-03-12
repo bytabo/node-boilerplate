@@ -1,6 +1,4 @@
-const requiredWinston = require('winston');
-
-const makeService = (winston = requiredWinston) => {
+const makeService = ({ winston }) => {
     const logger = winston.createLogger({
         format: winston.format.simple(),
     });

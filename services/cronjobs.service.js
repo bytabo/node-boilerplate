@@ -1,7 +1,4 @@
-const requiredCron = require('node-cron');
-const requiredLoggerService = require('./logger.service')();
-
-const makeService = (cron = requiredCron, logger = requiredLoggerService) => () => {
+const makeService = ({ cron, logger }) => () => {
     // ------------------------------
     // every day at 12am
     // ------------------------------

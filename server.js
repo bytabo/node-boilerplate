@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 require('dotenv').config();
 const app = require('./app');
-const logger = require('./services/logger.service')();
 const http = require('http');
+const logger = require('./services/logger.factory');
 require('./mongoose');
 
 const port = normalizePort(process.env.PORT || '3000');

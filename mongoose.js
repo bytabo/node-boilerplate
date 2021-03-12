@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const logger = require('./services/logger.service')();
+const logger = require('./services/logger.factory');
 
 const config = {
     autoIndex: false,
