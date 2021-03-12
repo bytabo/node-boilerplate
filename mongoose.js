@@ -7,7 +7,11 @@ const config = {
     useNewUrlParser: true,
 };
 
-mongoose.connect(process.env.DB_URL, config);
+if (process.env.DB_URL) {
+    mongoose.connect(process.env.DB_URL, config);
+} else {
+    logger.info('No MongoDB connection because DB_URL in .env is not present. ');
+}
 
 mongoose.connection.on('connected', () => {
     logger.info(`Mongoose default connection open to ${process.env.DB_URL}`);
