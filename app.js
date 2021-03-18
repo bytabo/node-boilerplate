@@ -12,6 +12,7 @@ app.use(middleware.helmet);
 app.use(middleware.ratelimit);
 app.use(middleware.json);
 app.use(middleware.urlencoded);
+app.use(middleware.cors);
 
 // routes
 app.use('/items', require('./routes/items'));
