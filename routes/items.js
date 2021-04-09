@@ -11,7 +11,7 @@ router.post('/create', async (req, res) => {
 });
 
 // READ
-router.get('/', async (_, res) => {
+router.get('/', async (req, res) => {
     const allItems = await Item.find({});
     res.json(allItems);
 });
