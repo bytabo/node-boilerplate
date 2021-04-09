@@ -48,6 +48,10 @@ Edit SMTP variables in .env file and setup your email template in ```./data/emai
 * Concurrency (performance) (really needed?)
 * .editorconfig
 
+## Security
+
+* add whitelist of domains in cors middleware (https://www.npmjs.com/package/cors)
+
 ## Authors
 
 bytabo - Digital crew [https://www.bytabo.de](https://www.bytabo.de)

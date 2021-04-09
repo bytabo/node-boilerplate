@@ -1,12 +1,12 @@
 const makeService = ({
-    rateLimit, helmet, basicAuth, express,
+    rateLimit, helmet, basicAuth, express, cors,
 }) => {
     const middleware = {};
 
     middleware.ratelimit = (req, res, next) => {
         rateLimit({
-            windowMs: process.env.RATELIMITER_TIME,
-            max: process.env.RATELIMITER_REQUESTS,
+            windowMs: process.env.RATELIMITER_TIME || 900000,
+            max: process.env.RATELIMITER_REQUESTS || 100,
         })(req, res, next);
     };
 
@@ -26,6 +26,10 @@ const makeService = ({
 
     middleware.urlencoded = (req, res, next) => {
         express.urlencoded({ extended: false })(req, res, next);
+    };
+
+    middleware.cors = (req, res, next) => {
+        cors()(req, res, next);
     };
 
     return middleware;
