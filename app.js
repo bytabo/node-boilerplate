@@ -14,6 +14,7 @@ app.use(middleware.json);
 app.use(middleware.urlencoded);
 
 // routes
+app.use('/healthcheck', require('./routes/healthcheck'));
 app.use('/items', require('./routes/items'));
 app.use('/users', require('./routes/users'));
 
