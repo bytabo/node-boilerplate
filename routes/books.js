@@ -5,6 +5,7 @@
  *      Book:
  *          type: object
  *          required:
+ *              - id
  *              - title
  *              - author
  *              - finished
@@ -12,15 +13,44 @@
  *              id:
  *                  type: integer
  *                  description: The auto-generated id of the book.
+ *              title:
+ *                  type: string
+ *                  description: The title of the book.
+ *              author:
+ *                  type: string
+ *                  description: Holger Glatt
+ *              finished:
+ *                  type: boolean
+ *                  description: true
  *          example:
+ *              id: 123
  *              title: The Pragmatic Programmer
  *              author: Andy Hunt / Dave Thomas
  *              finished: true
  */
 
+
+
+const express = require('express');
+
+const router = express.Router();
+const books = [
+    {
+        id: 1,
+        title: 'test',
+        author: 'holger1',
+        finished: true
+    }, {
+        id: 2,
+        title: 'test2',
+        author: 'holger2',
+        finished: false
+    },
+];
+
 /**
  * @swagger
- * /getAll:
+ * /:
  *   get:
  *     summary: Retrieve a list of Books.
  *     description: Retrieve a list of Books.
@@ -30,33 +60,75 @@
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 data:
- *                   type: array
- *                   items:
- *                     type: object
- *                     properties:
- *                       id:
- *                         type: integer
- *                         description: The book ID.
- *                         example: 0
- *                       name:
- *                         type: string
- *                         description: The book's name.
- *                         example: Clean Code Manifest
+ *                  type: array
+ *                  items:
+ *                      $ref: '#/components/schemas/Book'
  */
-
-const express = require('express');
-
-const router = express.Router();
-
-router.get('/getAll', async (req, res) => {
-    res.sendStatus(200);
+router.get('/', async (req, res) => {
+    res.json(books);
 });
+
+/**
+ * @swagger
+ * /{id}:
+ *   get:
+ *     summary: get a book by id.
+ *     description: Retrieve a list of Books.
+ *     parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: integer
+ *            required: true
+ *            description: The book id
+ *     responses:
+ *       200:
+ *         description: A book by id.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ *   put:
+ *     summary: get a book by id.
+ *     description: Retrieve a list of Books.
+ *     parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: integer
+ *            required: true
+ *            description: The book id
+ *
+ *
+ *     requestBody:
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#/components/schemas/Book'
+ *                  example:
+ *                      title: test3
+ *                      author: Jessica Smith
+ *                      finished: true
+ *
+ *     responses:
+ *       200:
+ *         description: A book by id.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ */
+router.get('/:id', async (req, res) => {
+    res.json(books[req.params.id]);
+});
+
+router.put('/:id', async (req, res) => {
+    res.json(books[req.params.id]);
+});
+
 module.exports = router;
 
-
-
-// letzter stand war hier, wir wollten das model definieren, das hat noch nicht geklappt
-// https://blog.logrocket.com/documenting-your-express-api-with-swagger/
+// kann man swagger kommentare in json file auslagern?
+// example routen anlegen (delete, post fehlen noch)
+// descriptions anpassen
+// -> in pr gießen
