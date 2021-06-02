@@ -43,7 +43,10 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:3000/books",
+                url: "http://localhost:3000/api/",
+            },
+            {
+                url: "https://develop.bytabo.de:3000/api/",
             },
         ],
     },
