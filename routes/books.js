@@ -1,20 +1,5 @@
 /**
  * @swagger
- * definitions:
- *   Puppy:
- *     properties:
- *       name:
- *         type: string
- *       breed:
- *         type: string
- *       age:
- *         type: integer
- *       sex:
- *         type: string
- */
-
-/**
- * @swagger
  * components:
  *  schemas:
  *      Book:
@@ -35,24 +20,38 @@
 
 /**
  * @swagger
- *
- * /members/feedback:
- *   post:
- *     description: Sends a mail concerning a users feedback to member
+ * /getAll:
+ *   get:
+ *     summary: Retrieve a list of Books.
+ *     description: Retrieve a list of Books.
  *     responses:
  *       200:
- *          description: Mail was sent
- *          schema:
- *              $ref: '#/definitions/Book'
- *       any other:
- *          description: Server error
+ *         description: A list of books.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       id:
+ *                         type: integer
+ *                         description: The book ID.
+ *                         example: 0
+ *                       name:
+ *                         type: string
+ *                         description: The book's name.
+ *                         example: Clean Code Manifest
  */
 
 const express = require('express');
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/getAll', async (req, res) => {
     res.sendStatus(200);
 });
 module.exports = router;
