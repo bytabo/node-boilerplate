@@ -49,9 +49,54 @@ const options = {
                 url: "https://develop.bytabo.de:3000/api/",
             },
         ],
+        tags: [
+            {
+                name: 'Pets'
+            }
+        ],
+        paths: {
+            "/pets": {
+                "get": {
+                    tags: ['Pets'],
+                    description: "Returns all pets from the system that the user has access to",
+                    operationId: 'getPets',
+                    security: [
+                        {
+                            bearerAuth: []
+                        }
+                    ],
+                    responses: {
+                        "200": {
+                            description: "A list of pets.",
+                            "content": {
+                                "application/json": {
+                                    schema: {
+                                        type: "array",
+                                        items: {
+                                            pet_name: {
+                                                type: 'string',
+                                                description: 'Pet Name'
+                                            },
+                                            pet_age: {
+                                                type: 'string',
+                                                description: 'Pet Age'
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
-    apis: ["./routes/books.js"],
+    apis: ["./routes/books.js"]
 };
+
+
+
+
 
 const specs = swaggerJsdoc(options);
 app.use(

@@ -32,7 +32,6 @@
 
 
 const express = require('express');
-
 const router = express.Router();
 const books = [
     {
@@ -88,9 +87,11 @@ router.get('/', async (req, res) => {
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Book'
+ *       404:
+ *         description: Book with given id was not found
  *   put:
- *     summary: get a book by id.
- *     description: Retrieve a list of Books.
+ *     summary: update a book by id.
+ *     description: Update book with given id
  *     parameters:
  *          - in: path
  *            name: id
@@ -98,8 +99,6 @@ router.get('/', async (req, res) => {
  *              type: integer
  *            required: true
  *            description: The book id
- *
- *
  *     requestBody:
  *          content:
  *              application/json:
@@ -109,26 +108,62 @@ router.get('/', async (req, res) => {
  *                      title: test3
  *                      author: Jessica Smith
  *                      finished: true
- *
  *     responses:
  *       200:
- *         description: A book by id.
+ *         description: Book updated successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Book'
+ *       404:
+ *         description: Book with id not found.
+ *   delete:
+ *     summary: delete a book by id.
+ *     description: Deletes a book by id.
+ *     parameters:
+ *          - in: path
+ *            name: id
+ *            schema:
+ *              type: integer
+ *            required: true
+ *            description: The book id
+ *     responses:
+ *       200:
+ *         description: Status code for book deleted successfully
+ *       404:
+ *         description: Book with id not found
+ */
+router.route('/:id')
+    .get(async (req, res) => {
+        res.json(books[req.params.id]);
+    })
+    .put(async (req, res) => {
+        res.json(books[req.params.id]);
+    })
+    .delete(async (req, res) => {
+        res.sendStatus(200);
+    });
+
+/**
+ * @swagger
+ * /:
+ *   post:
+ *     summary: Adds a new book
+ *     description: Add a new book
+ *     responses:
+ *       200:
+ *         description: Book created successfully.
  *         content:
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Book'
  */
-router.get('/:id', async (req, res) => {
-    res.json(books[req.params.id]);
-});
-
-router.put('/:id', async (req, res) => {
-    res.json(books[req.params.id]);
+router.post('/', async (req, res) => {
+    res.json(books);
 });
 
 module.exports = router;
 
 // kann man swagger kommentare in json file auslagern?
-// example routen anlegen (delete, post fehlen noch)
-// descriptions anpassen
-// -> in pr gießen
+// auth/geschützte routen über swagger
+// in pr gießen
