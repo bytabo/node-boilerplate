@@ -26,7 +26,7 @@ const swaggerOptions = require("./swagger");
 
 
 app.use(
-    "/api-docs",
+    '/api-docs',
     swaggerUi.serve,
     swaggerUi.setup(swaggerOptions)
 );
