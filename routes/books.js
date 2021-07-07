@@ -67,6 +67,12 @@ router.get('/', async (req, res) => {
     res.json(books);
 });
 
+router
+    .get('/', async (req, res) => {
+    res.json(books);
+})
+    .post("")
+
 /**
  * @swagger
  * /{id}:
