@@ -23,8 +23,6 @@ app.use('/books', require('./routes/books'));
 const swaggerUi = require("swagger-ui-express");
 const swaggerOptions = require("./swagger");
 
-
-
 app.use(
     '/api-docs',
     swaggerUi.serve,

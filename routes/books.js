@@ -170,6 +170,8 @@ router.post('/', async (req, res) => {
 
 module.exports = router;
 
-// kann man swagger kommentare in json file auslagern?
+// kann man swagger kommentare in json file auslagern? YES!
 // auth/geschützte routen über swagger
 // in pr gießen
+// id bei books fehlt - ist das ein Problem?
+// Book-ID wird nicht als Parameter gesetzt
