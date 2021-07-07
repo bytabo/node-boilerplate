@@ -22,42 +22,14 @@ app.use('/books', require('./routes/books'));
 
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require("swagger-ui-express");
+const swaggerJson = require("./swagger");
 
-const options = {
-    definition: {
-        openapi: "3.0.0",
-        info: {
-            title: "LogRocket Express API with Swagger",
-            version: "0.1.0",
-            description:
-                "This is a simple CRUD API application made with Express and documented with Swagger",
-            license: {
-                name: "MIT",
-                url: "https://spdx.org/licenses/MIT.html",
-            },
-            contact: {
-                name: "LogRocket",
-                url: "https://logrocket.com",
-                email: "info@email.com",
-            },
-        },
-        servers: [
-            {
-                url: "http://localhost:3000/api/",
-            },
-            {
-                url: "https://develop.bytabo.de:3000/api/",
-            },
-        ],
-    },
-    apis: ["./routes/books.js"],
-};
 
-const specs = swaggerJsdoc(options);
+const specs = swaggerJsdoc(swaggerJson);
 app.use(
     "/api-docs",
     swaggerUi.serve,
-    swaggerUi.setup(specs)
+    swaggerUi.setup(swaggerJson)
 );
 
 module.exports = app;
