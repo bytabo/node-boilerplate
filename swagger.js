@@ -1,76 +1,78 @@
-const booksSwagger = require("./routes/books.swagger");
+const itemsSwagger = require('./routes/items.swagger');
 
 const swaggerOptions = {
-   openapi: "3.0.0",
+   openapi: '3.0.0',
    info: {
-      title: "LogRocket Express API with Swagger",
-      version: "0.1.0",
+      title: 'Simple bytabo API with Swagger',
+      version: '0.1.0',
       description:
-         "This is a simple CRUD API application made with Express and documented with Swagger",
+         'This is a simple bytabo API application made with Express and documented with Swagger',
       license: {
-         name: "MIT",
-         url: "https://spdx.org/licenses/MIT.html",
+         name: 'MIT',
+         url: 'https://spdx.org/licenses/MIT.html',
       },
       contact: {
-         name: "LogRocket",
-         url: "https://logrocket.com",
-         email: "info@email.com",
+         name: 'Bytabo GmbH',
+         url: 'https://bytabo.de',
+         email: 'info@bytabo.de',
       },
    },
-   "components": {
-      "schemas": {
-         "Book": {
-            "type": "object",
-            "required": [
-               "id",
-               "title",
-               "author",
-               "finished"
+   components: {
+      schemas: {
+         Item: {
+            type: 'object',
+            required: [
+               'name',
+               'isChecked'
             ],
-            "properties": {
-               "id": {
-                  "type": "integer",
-                  "description": "The auto-generated id of the book."
+            properties: {
+               id: {
+                  type: 'string',
+                  description: 'The auto-generated id of the item.'
                },
-               "title": {
-                  "type": "string",
-                  "description": "The title of the book."
+               name: {
+                  type: 'string',
+                  description: 'The name of the item.',
                },
-               "author": {
-                  "type": "string",
-                  "description": "Holger Glatt"
+               description: {
+                  type: 'string',
+                  description: 'Description of item.'
                },
-               "finished": {
-                  "type": "boolean",
-                  "description": true
+               isChecked: {
+                  type: 'boolean',
+                  description: 'Info if item is checked.',
+               },
+               isImportant: {
+                  type: 'boolean',
+                  description: 'Info if item is important.'
                }
             },
-            "example": {
-               "id": 123,
-               "title": "The Pragmatic Programmer",
-               "author": "Andy Hunt / Dave Thomas",
-               "finished": true
+            example: {
+               id: 'eavafavraefasdfae32a',
+               name: 'Clean dishes',
+               description: 'Clean dishes in kitchen',
+               isChecked: true,
+               isImportant: false
             }
          }
       }
    },
    servers: [
       {
-         url: "http://localhost:3000/api/",
+         url: 'http://localhost:3000/',
       },
       {
-         url: "https://develop.bytabo.de:3000/api/",
+         url: 'https://develop.bytabo.de:3000/',
       },
    ],
    tags: [
       {
-         name: 'books'
+         name: 'items'
       }
    ],
    paths: {
-      "/books": booksSwagger
+      ...itemsSwagger
    }
 };
-
 
 module.exports = swaggerOptions;

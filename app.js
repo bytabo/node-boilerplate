@@ -18,7 +18,6 @@ app.use(middleware.cors);
 app.use('/healthcheck', require('./routes/healthcheck'));
 app.use('/items', require('./routes/items'));
 app.use('/users', require('./routes/users'));
-app.use('/books', require('./routes/books'));
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerOptions = require("./swagger");
