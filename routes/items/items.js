@@ -1,6 +1,7 @@
 const express = require('express');
+
 const router = express.Router();
-const Item = require('../models/item.mongoose');
+const Item = require('../../models/item.mongoose');
 
 router.route('/')
     .get(async (req, res) => {
@@ -54,7 +55,6 @@ router.route('/:id')
     });
 
 module.exports = router;
-
 
 // @todo
 // - json beautify in items.swagger.js
