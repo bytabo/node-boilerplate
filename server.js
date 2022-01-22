@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-require('dotenv').config();
+require('dotenv')
+    .config();
 const http = require('http');
 const app = require('./app');
 const logger = require('./services/logger.factory');
@@ -12,15 +13,15 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
-function normalizePort(portValue) {
+const normalizePort = (portValue) => {
     const portNumber = parseInt(portValue, 10);
     if (Number.isNaN(portNumber)) return portValue;
     if (portNumber >= 0) return portNumber;
 
     return false;
-}
+};
 
-function onError(error) {
+const onError = (error) => {
     if (error.syscall !== 'listen') {
         throw error;
     }
@@ -30,20 +31,20 @@ function onError(error) {
         : `Port ${port}`;
 
     switch (error.code) {
-    case 'EACCES':
-        logger.error(`${bind} requires elevated privileges`);
-        process.exit(1);
-        break;
-    case 'EADDRINUSE':
-        logger.error(`${bind} is already in use`);
-        process.exit(1);
-        break;
-    default:
-        throw error;
+        case 'EACCES':
+            logger.error(`${bind} requires elevated privileges`);
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            logger.error(`${bind} is already in use`);
+            process.exit(1);
+            break;
+        default:
+            throw error;
     }
-}
+};
 
-function onListening() {
+const onListening = () => {
     const addr = server.address();
     logger.info(`Listening on ${addr.port}`);
-}
+};

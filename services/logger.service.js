@@ -32,12 +32,12 @@ const makeService = ({ winston }) => {
 
     const logMessage = (level, message) => {
         switch (typeof message) {
-        case 'object':
-            return logger.log({ level, message: JSON.stringify(message) });
-        case 'string':
-            return logger.log({ level, message });
-        default:
-            return logger.log({ level, message: message.toString() });
+            case 'object':
+                return logger.log({ level, message: JSON.stringify(message) });
+            case 'string':
+                return logger.log({ level, message });
+            default:
+                return logger.log({ level, message: message.toString() });
         }
     };
 

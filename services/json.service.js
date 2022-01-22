@@ -1,16 +1,16 @@
 const makeService = (axios) => {
     const testUrl = 'https://jsonplaceholder.typicode.com/todos/1';
-    async function getJson(url) {
+    const getJson = async (url) => {
         try {
             const json = await axios.get(url);
             const parsedJson = jsonService.parseJson(json.data);
 
             return parsedJson;
         } catch (error) {
-            console.error();
+            console.error(error);
             throw new Error(500);
         }
-    }
+    };
 
     const logJson = async () => {
         const parsedJson = await jsonService.getJson(testUrl);

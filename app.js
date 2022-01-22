@@ -1,4 +1,5 @@
 const app = require('express')();
+const swaggerUi = require('swagger-ui-express');
 const logger = require('./services/logger.factory');
 
 if (!process.env.PORT) {
@@ -15,8 +16,15 @@ app.use(middleware.urlencoded);
 app.use(middleware.cors);
 
 // routes
-app.use('/healthcheck', require('./routes/healthcheck'));
-app.use('/items', require('./routes/items'));
-app.use('/users', require('./routes/users'));
+app.use('/healthcheck', require('./routes/healthcheck/healthcheck'));
+app.use('/items', require('./routes/items/items'));
+
+const swaggerOptions = require('./swagger');
+
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerOptions),
+);
 
 module.exports = app;
